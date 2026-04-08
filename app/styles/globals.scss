@@ -1,0 +1,91 @@
+@use './common/variable' as *;
+@use "./common/font";
+@use './common/reset';
+
+body {
+  font-size: 14px;
+  font-family: "Inter", "Pretendard", sans-serif;
+  line-height: 1.5;
+  color: $gray-800;
+  background-color: #fff;
+}
+
+::selection {
+  color: #fff;
+  background: $primary;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: $primary;
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.code-font {
+  font-family: "Source Code Pro", "Pretendard", monospace;
+}
+
+.cite-font {
+  font-style: italic;
+  font-family: "Lora", serif;
+}
+
+.external-link {
+  color: $primary;
+  text-decoration: underline;
+  text-decoration-color: rgba($primary, 0.3);
+  text-underline-offset: 2px;
+  transition: all 0.15s ease;
+
+  &:hover {
+    text-decoration-color: $primary;
+  }
+
+  &::after {
+    content: ' ↗';
+    font-size: 0.75em;
+    vertical-align: super;
+  }
+}
+
+.cite-source {
+  margin-top: 12px;
+  font-size: 13px;
+  color: $gray-500;
+}
+
+.blockquote {
+  box-sizing: border-box;
+  margin: 8px 0;
+  padding: 12px 16px;
+  border-left: 3px solid $gray-200;
+  background-color: $gray-50;
+  border-radius: 0 $radius-sm $radius-sm 0;
+}
+
+.blockquote-en {
+  font-style: italic;
+  font-family: "Lora", serif;
+  color: $gray-700;
+
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
+
+.blockquote-ko {
+  color: $gray-700;
+  font-family: "Pretendard", san-serif;
+
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}

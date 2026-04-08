@@ -1,0 +1,101 @@
+@use '../../common/variable' as *;
+
+.popup {
+  &-overlay {
+    box-sizing: border-box;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 24px;
+    animation: popup-fade-in $transition-fast forwards;
+  }
+
+  &-container {
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+    width: 100%;
+    max-height: calc(100vh - 48px);
+    display: flex;
+    flex-direction: column;
+    animation: popup-scale-in $transition-base forwards;
+  }
+
+  &-sm {
+    max-width: 400px;
+  }
+
+  &-md {
+    max-width: 560px;
+  }
+
+  &-lg {
+    max-width: 780px;
+  }
+
+  &-header {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid $gray-200;
+    flex-shrink: 0;
+  }
+
+  &-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: $gray-900;
+    line-height: 1.4;
+  }
+
+  &-close {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: $radius-sm;
+    background: none;
+    font-size: 22px;
+    color: $gray-500;
+    cursor: pointer;
+    transition: background-color $transition-fast, color $transition-fast;
+    flex-shrink: 0;
+    margin-left: auto;
+
+    &:hover {
+      background-color: $gray-100;
+      color: $gray-800;
+    }
+  }
+
+  &-body {
+    box-sizing: border-box;
+    padding: 24px;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    color: $gray-700;
+  }
+}
+
+@keyframes popup-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popup-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

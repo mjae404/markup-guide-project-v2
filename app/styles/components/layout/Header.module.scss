@@ -1,0 +1,223 @@
+@use '../../common/variable' as *;
+@use '../../common/mixin' as *;
+
+.header {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  height: $header-height;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid $gray-200;
+  width: 100%;
+
+  &-inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &-title {
+    &-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 17px;
+      font-weight: 600;
+      color: $gray-900;
+      transition: color $transition-fast;
+      letter-spacing: -0.02em;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    &-accent {
+      color: $primary;
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @include respond(md) {
+    display: none;
+  }
+
+  &-link {
+    box-sizing: border-box;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $gray-600;
+    border-radius: $radius-md;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $primary;
+      background-color: $gray-50;
+    }
+
+    &.active {
+      color: $primary;
+      background-color: rgba($primary, 0.08);
+    }
+  }
+}
+
+.mobile {
+  &-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: $radius-sm;
+    color: $gray-700;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $gray-100;
+    }
+
+    @include respond(md) {
+      display: flex;
+    }
+  }
+
+  &-overlay {
+    display: none;
+
+    @include respond(md) {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      visibility: hidden;
+      transition: all $transition-base;
+
+      &.open {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &-nav {
+    display: none;
+
+    @include respond(md) {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 201;
+      width: 300px;
+      max-width: calc(100vw - 48px);
+      background-color: #fff;
+      transform: translateX(100%);
+      transition: transform $transition-base;
+      overflow-y: auto;
+
+      &.open {
+        transform: translateX(0);
+      }
+    }
+
+    &-header {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid $gray-200;
+
+      &-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: $gray-900;
+      }
+    }
+
+    &-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-radius: $radius-sm;
+      color: $gray-500;
+      transition: all $transition-fast;
+
+      &:hover {
+        background-color: $gray-100;
+        color: $gray-700;
+      }
+    }
+
+    &-group {
+      box-sizing: border-box;
+      padding: 12px 0;
+      border-bottom: 1px solid $gray-100;
+    }
+
+    &-title {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: $gray-400;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    &-list {
+      box-sizing: border-box;
+      padding: 0 8px;
+    }
+
+    &-link {
+      box-sizing: border-box;
+      display: block;
+      padding: 10px 20px;
+      font-size: 14px;
+      color: $gray-600;
+      border-radius: $radius-sm;
+      transition: all $transition-fast;
+
+      &:hover {
+        color: $primary;
+        background-color: $gray-50;
+      }
+
+      &.active {
+        color: $primary;
+        font-weight: 500;
+        background-color: rgba($primary, 0.06);
+      }
+    }
+  }
+}

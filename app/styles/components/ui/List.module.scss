@@ -1,0 +1,116 @@
+@use '../../common/variable' as *;
+
+.unordered-list {
+  .list-item {
+    box-sizing: border-box;
+    position: relative;
+    padding-left: 16px;
+    font-size: 14px;
+    color: $gray-600;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 0;
+      display: block;
+      width: 5px;
+      height: 5px;
+      background-color: $primary;
+      border-radius: 50%;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 3px;
+    }
+  }
+}
+
+.ordered-list {
+  counter-reset: number 0;
+
+  .list-item {
+    font-size: 14px;
+    color: $gray-600;
+
+    &::before {
+      counter-increment: number 1;
+      content: counter(number) '. ';
+      font-weight: 600;
+      color: $primary;
+      margin-right: 4px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 6px;
+    }
+  }
+}
+
+.guideline-list {
+  counter-reset: guideline 0;
+
+  .guideline-item {
+    box-sizing: border-box;
+    counter-increment: guideline 1;
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid $gray-100;
+    }
+  }
+
+  .guideline-title {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    color: $gray-800;
+
+    &::before {
+      content: counter(guideline) '.';
+      font-weight: 700;
+      color: $primary;
+      flex-shrink: 0;
+    }
+  }
+
+  .guideline-body {
+    padding-left: 24px;
+  }
+}
+
+.description-list {
+  padding: 20px;
+  border-radius: $radius-md;
+  border: 1px solid $gray-200;
+  box-sizing: border-box;
+
+  .desc-group {
+    &:not(:first-child) {
+      box-sizing: border-box;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid $gray-100;
+    }
+  }
+
+  .desc-term {
+    font-weight: 600;
+    color: $gray-800;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+
+  .desc-detail {
+    font-size: 14px;
+    color: $gray-600;
+
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+}

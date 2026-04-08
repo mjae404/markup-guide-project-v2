@@ -1,0 +1,65 @@
+@use './variable' as *;
+
+@mixin ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin line-clamp($lines, $line-height: 1.6) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  line-height: $line-height;
+  max-height: ($line-height * $lines * 1em);
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: 640px) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: 768px) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: 1024px) { @content; }
+  } @else if $breakpoint == xl {
+    @media (max-width: 1280px) { @content; }
+  }
+}
+
+@mixin container {
+  box-sizing: border-box;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 24px;
+
+  @include respond(sm) {
+    padding: 0 16px;
+  }
+}
+
+@mixin focus-ring {
+  outline: 2px solid $primary-light;
+  outline-offset: 2px;
+}
+
+@mixin nav-link {
+  box-sizing: border-box;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $gray-600;
+  border-radius: $radius-sm;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $primary;
+    background-color: $gray-50;
+  }
+
+  &.active {
+    color: $primary;
+    font-weight: 600;
+    background-color: rgba($primary, 0.06);
+  }
+}

@@ -1,0 +1,61 @@
+@use '../../common/variable' as *;
+
+.checkbox {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__indicator {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $gray-300;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: background-color $transition-fast, border-color $transition-fast;
+    flex-shrink: 0;
+
+    svg {
+      opacity: 0;
+      transform: scale(0.6);
+      transition: opacity $transition-fast, transform $transition-fast;
+    }
+  }
+
+  &__label {
+    font-size: 14px;
+    color: $gray-800;
+    line-height: 1.4;
+  }
+
+  &--checked {
+    .checkbox__indicator {
+      background-color: $primary;
+      border-color: $primary;
+
+      svg {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

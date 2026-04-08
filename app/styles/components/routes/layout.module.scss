@@ -1,0 +1,30 @@
+@use '../../common/variable' as *;
+@use '../../common/mixin' as *;
+
+.main {
+  margin-top: $header-height;
+  min-height: calc(100svh - $header-height - $footer-height);
+}
+
+.content {
+  &-with-sidebar {
+    @include container;
+    box-sizing: border-box;
+    display: flex;
+    gap: $side-menu-gap;
+    padding-top: 24px;
+    padding-bottom: 80px;
+  }
+
+  &-area {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &-full {
+    @include container;
+    box-sizing: border-box;
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+}

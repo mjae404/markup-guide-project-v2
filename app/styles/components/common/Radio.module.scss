@@ -1,0 +1,63 @@
+@use '../../common/variable' as *;
+
+.radio {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__indicator {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $gray-300;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: border-color $transition-fast;
+    flex-shrink: 0;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: transparent;
+    transform: scale(0);
+    transition: background-color $transition-fast, transform $transition-fast;
+  }
+
+  &__label {
+    font-size: 14px;
+    color: $gray-800;
+    line-height: 1.4;
+  }
+
+  &--checked {
+    .radio__indicator {
+      border-color: $primary;
+    }
+
+    .radio__dot {
+      background-color: $primary;
+      transform: scale(1);
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

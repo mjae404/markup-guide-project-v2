@@ -1,0 +1,62 @@
+@use '../../common/variable' as *;
+
+.input {
+  &-wrapper {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &-label {
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: 600;
+    color: $gray-700;
+    line-height: 1.4;
+  }
+
+  &-field {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: $gray-900;
+    background-color: #fff;
+    border: 1px solid $gray-300;
+    border-radius: $radius-sm;
+    outline: none;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+    line-height: 1.5;
+
+    &::placeholder {
+      color: $gray-400;
+    }
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba($primary, 0.12);
+    }
+
+    &--error {
+      border-color: #ef4444;
+
+      &:focus {
+        border-color: #ef4444;
+        box-shadow: 0 0 0 3px rgba(#ef4444, 0.12);
+      }
+    }
+
+    &--disabled {
+      background-color: $gray-50;
+      color: $gray-400;
+      cursor: not-allowed;
+    }
+  }
+
+  &-error {
+    font-size: 12px;
+    color: #ef4444;
+    line-height: 1.4;
+  }
+}

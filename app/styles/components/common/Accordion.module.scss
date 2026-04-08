@@ -1,0 +1,74 @@
+@use '../../common/variable' as *;
+
+.accordion {
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid $gray-200;
+    border-radius: $radius-md;
+    overflow: hidden;
+  }
+
+  &-item {
+    border-bottom: 1px solid $gray-200;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &-trigger {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 20px;
+    border: none;
+    background-color: #fff;
+    color: $gray-800;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+    text-align: left;
+
+    &:hover {
+      background-color: $gray-50;
+    }
+  }
+
+  &-chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    transition: transform $transition-base;
+    color: $gray-400;
+    flex-shrink: 0;
+
+    &-open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-content-wrap {
+    overflow: hidden;
+    transition: max-height $transition-base;
+    max-height: 0;
+
+    &-open {
+      max-height: 500px;
+    }
+  }
+
+  &-content {
+    box-sizing: border-box;
+    padding: 16px 20px;
+    color: $gray-600;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}

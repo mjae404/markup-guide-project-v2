@@ -1,0 +1,49 @@
+@use '../../common/variable' as *;
+
+.section {
+  &:not(:last-child) {
+    box-sizing: border-box;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid $gray-100;
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: $gray-900;
+    letter-spacing: -0.01em;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 20px;
+      background-color: $primary;
+      border-radius: 2px;
+    }
+  }
+
+  &-sub-title {
+    margin-top: 32px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $gray-800;
+
+    & + div {
+      margin: 0;
+    }
+  }
+
+  &-desc {
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: $gray-600;
+  }
+}

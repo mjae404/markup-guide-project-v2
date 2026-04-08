@@ -1,0 +1,50 @@
+@use '../../common/variable' as *;
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &-wrap {
+    box-sizing: border-box;
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid $gray-200;
+    border-radius: $radius-md;
+  }
+
+  &-head-cell {
+    box-sizing: border-box;
+    padding: 12px 16px;
+    background-color: $gray-50;
+    color: $gray-700;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid $gray-200;
+    white-space: nowrap;
+  }
+
+  &-body-row {
+    transition: background-color $transition-fast;
+
+    &-striped {
+      &:nth-child(even) {
+        background-color: $gray-50;
+      }
+    }
+
+    &-hoverable {
+      &:hover {
+        background-color: rgba($primary, 0.04);
+      }
+    }
+  }
+
+  &-body-cell {
+    box-sizing: border-box;
+    padding: 12px 16px;
+    color: $gray-800;
+    font-size: 14px;
+    border-bottom: 1px solid $gray-100;
+  }
+}

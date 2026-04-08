@@ -1,0 +1,47 @@
+@use '../../common/variable' as *;
+
+.progress {
+  &-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &-track {
+    box-sizing: border-box;
+    flex: 1;
+    background-color: $gray-100;
+    border-radius: 999px;
+    overflow: hidden;
+
+    &-sm {
+      height: 4px;
+    }
+
+    &-md {
+      height: 8px;
+    }
+
+    &-lg {
+      height: 12px;
+    }
+  }
+
+  &-fill {
+    height: 100%;
+    border-radius: 999px;
+    background-color: $primary;
+    transition: width $transition-base;
+    min-width: 0;
+  }
+
+  &-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: $gray-600;
+    min-width: 40px;
+    text-align: right;
+    white-space: nowrap;
+  }
+}

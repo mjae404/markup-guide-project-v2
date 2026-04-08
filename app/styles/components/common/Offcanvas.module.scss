@@ -1,0 +1,101 @@
+@use '../../common/variable' as *;
+
+.offcanvas {
+  &-overlay {
+    box-sizing: border-box;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: offcanvas-fade-in $transition-fast forwards;
+  }
+
+  &-panel {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 360px;
+    max-width: 100%;
+    background-color: #fff;
+    box-shadow: $shadow-lg;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-left {
+    left: 0;
+    animation: offcanvas-slide-left $transition-base forwards;
+  }
+
+  &-right {
+    right: 0;
+    animation: offcanvas-slide-right $transition-base forwards;
+  }
+
+  &-header {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid $gray-200;
+    flex-shrink: 0;
+  }
+
+  &-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: $gray-900;
+    line-height: 1.4;
+  }
+
+  &-close {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: $radius-sm;
+    background: none;
+    font-size: 22px;
+    color: $gray-500;
+    cursor: pointer;
+    transition: background-color $transition-fast, color $transition-fast;
+    margin-left: auto;
+
+    &:hover {
+      background-color: $gray-100;
+      color: $gray-800;
+    }
+  }
+
+  &-body {
+    box-sizing: border-box;
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.6;
+    color: $gray-700;
+  }
+}
+
+@keyframes offcanvas-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes offcanvas-slide-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes offcanvas-slide-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}

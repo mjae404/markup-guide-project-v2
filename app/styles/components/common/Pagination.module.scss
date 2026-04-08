@@ -1,0 +1,61 @@
+@use '../../common/variable' as *;
+
+.pagination {
+  &-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &-button {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border: 1px solid $gray-200;
+    border-radius: $radius-sm;
+    background-color: #fff;
+    color: $gray-700;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all $transition-fast;
+    user-select: none;
+
+    &:hover:not(:disabled) {
+      background-color: $gray-50;
+      border-color: $gray-300;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &-active {
+      background-color: $primary;
+      border-color: $primary;
+      color: #fff;
+
+      &:hover:not(:disabled) {
+        background-color: $primary-dark;
+        border-color: $primary-dark;
+      }
+    }
+  }
+
+  &-ellipsis {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    color: $gray-400;
+    font-size: 14px;
+    user-select: none;
+  }
+}

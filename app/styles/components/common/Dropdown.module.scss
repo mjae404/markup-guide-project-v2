@@ -1,0 +1,63 @@
+@use '../../common/variable' as *;
+
+.dropdown {
+  &-wrap {
+    position: relative;
+    display: inline-block;
+  }
+
+  &-trigger {
+    cursor: pointer;
+  }
+
+  &-menu {
+    box-sizing: border-box;
+    position: absolute;
+    top: calc(100% + 4px);
+    z-index: 100;
+    min-width: 160px;
+    padding: 6px 0;
+    background-color: #fff;
+    border: 1px solid $gray-200;
+    border-radius: $radius-md;
+    box-shadow: $shadow-md;
+    opacity: 0;
+    transform: translateY(-4px);
+    visibility: hidden;
+    transition: opacity $transition-fast, transform $transition-fast, visibility $transition-fast;
+
+    &-open {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+    }
+
+    &-left {
+      left: 0;
+    }
+
+    &-right {
+      right: 0;
+    }
+
+    &-item {
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      padding: 10px 16px;
+      border: none;
+      background: none;
+      color: $gray-700;
+      font-size: 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color $transition-fast;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: $gray-50;
+        color: $primary;
+      }
+    }
+  }
+}
